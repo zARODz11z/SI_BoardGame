@@ -1,0 +1,30 @@
+What is the angular speed formula?
+sin30 degrees =?
+simplify cscX/secX 
+The diameter of a ferris wheel is 80 feet. If the ferris wheel makes one revolution every 45 seconds, find the linear velocity of a person on the feris wheel. Round to nearest tenth. 
+convert -225 degrees to radians 
+convert 60 miles per hour into feet per second 
+Evaluate using co-fucntions: cos(43degrees) = sin(x) 
+what are the sides for a 30-60-90 triangle 
+what are the sides for a 45-45-90 triangle? 
+find the amplitude period phase shift and vertical shifts then produce the graph of 3cos(2x)-3   
+when is sinX negative and decreasing?
+What is an even function?
+What is an odd function?
+Find cot(5pi/6)
+simplify secX/tanX
+simplify cosXCotX + sinX
+when is arccosX restricted?
+sin^-1(-sqrt(2)/2)
+simplify (secX / cosX) - (tanX / cotX)
+if tanX = 5/12 and x is in the 2nd quadrant find sin2X
+find exact value of cos(5pi/12)
+use half angle identites to find sin45 degrees
+prove (cosX - sinX)^2 = 1 - 2sinXcosX
+show cos((pi/2) +x ) = -sinX   cat3_500 key
+cos(a/2) = ?
+if tanX = 5/12 and x is in the 2nd quadrant find tan2X
+if tanX = 5/12 and x is in the 2nd quadrant find cos2X
+tan(a+b) = ?
+prove sin(2x) = 2sinXcosX
+find exact value of sin(105 degrees)
