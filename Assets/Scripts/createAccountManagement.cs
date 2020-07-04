@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor.VersionControl;
 using UnityEngine.Networking;
+using System;
 
 public class createAccountManagement : MonoBehaviour
 {
@@ -14,14 +15,20 @@ public class createAccountManagement : MonoBehaviour
     public InputField emailField;
     public InputField passwordField;
     public InputField confrimPassword;
+    public InputField codeField;
     public Button submitButton;
+    public Button confirmationButton;
     public Text consoleMessage;
     public Toggle showPasswordToggle;
+    public static int confirmationCode;
+    public GameObject inputConfirmationCode;
 
 
     
     public void CallRegister()
     {
+        confirmationCode = UnityEngine.Random.Range(1000, 10000);
+        Debug.Log(confirmationCode);
         StartCoroutine(Register());
 
     }
@@ -40,7 +47,14 @@ public class createAccountManagement : MonoBehaviour
         if (www.text == "0" && passwordField.text == confrimPassword.text)
         {
             Debug.Log("User created successfully");
-            SceneManager.LoadScene("WelcomePage");
+            inputConfirmationCode.SetActive(true);
+            submitButton.interactable = false;
+            confirmationButton.interactable = true;
+
+            //Emailer emailObject = new Emailer();
+            //emailObject.Start(emailField.text, confirmationCode);
+            //verifyConfirmationCode();
+                                                          
 
         }
         else
@@ -49,23 +63,59 @@ public class createAccountManagement : MonoBehaviour
             Debug.Log("User creation failed. Error #" + www.text);
         }
     }
-
-    public void VerifyInputs()
+    public void verifyConfirmationCode()
     {
-        submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
+        if (int.Parse(codeField.text) != confirmationCode)
+        {
+            consoleMessage.text = "Wrong code";
+            
+        }
+        else
+        {
+            SceneManager.LoadScene("WelcomePage");
+        }
+        //else return false;
+    }
+
+    public void verifyInputs()
+    {
+        if(nameField.text.Length >= 8 && passwordField.text == confrimPassword.text && emailField.text.Contains("@") && emailField.text.Contains("."))
+        {
+            submitButton.interactable = true;
+        }
+                
+    }
+    public void VerifyUsername()
+    {
+        if (nameField.text.Length >= 8)
+        {
+            consoleMessage.text = "";
+
+        }
+        else consoleMessage.text = "Enter a valid username";
+    }
+    public void VerifyPasswords()
+    {
+        if (confrimPassword.text == passwordField.text)
+        {
+            consoleMessage.text = "";
+        }
+        else consoleMessage.text = "Passwords dont match";
     }
     
+
     public void VerifyEmail()
     {
         if(emailField.text.Contains("@") && emailField.text.Contains("."))
         {
-            submitButton.interactable = true;
+
             consoleMessage.text = "";
         }
         else
         {
-            consoleMessage.text = "Please enter a valid email";
+            consoleMessage.text = "Enter a valid email";
         }
+
         //submitButton.interactable = (emailField.text.Contains("@") && emailField.text.Contains("."));
     }
     
