@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class LoginManagement : MonoBehaviour
 {
-    public static string username;
-    public static string password;
+    
     public InputField nameField;
     public InputField passwordField;
     public Button submitButton;
+    public Text consoleMessage;
+    public Toggle showPasswordToggle;
 
 
 
@@ -39,10 +40,23 @@ public class LoginManagement : MonoBehaviour
         }
         else
         {
+            consoleMessage.text = www.text;
             Debug.Log("User login failed. Error #" + www.text);
         }
     }
 
+    public void hideOrShowPassword()
+    {
+        if (showPasswordToggle.isOn)
+        {
+            passwordField.contentType = InputField.ContentType.Standard;
+            
+        }
+        else if (!showPasswordToggle.isOn)
+        {
+            passwordField.contentType = InputField.ContentType.Password;
+        }
+    }
     public void VerifyInputs()
     {
         submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
@@ -50,12 +64,7 @@ public class LoginManagement : MonoBehaviour
     // Use this for initialization
 
 
-    public void finishSignIn()
-    {
-        getUsername();
-        getPassword();
-        SceneManager.LoadScene("boardGameSetUp");
-    }
+    
     
     public void forgotPassword()
     {
@@ -66,16 +75,7 @@ public class LoginManagement : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().mute = !GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().mute;
     }
-    public void getUsername()
-    {
-        username = GameObject.Find("userNameInput").GetComponent<Text>().text;
-        Debug.Log("username is: " +username);
-    }
-    public void getPassword()
-    {
-        password = GameObject.Find("passwordInput").GetComponent<Text>().text;
-        Debug.Log("password is: " + password);
-    }
+    
     public void goHome()
     {
         SceneManager.LoadScene("WelcomePage");
