@@ -12,10 +12,10 @@ using UnityEngine.UI;
 {
     //[SerializeField] TMPro.TextMeshProUGUI txtData;
     //[SerializeField]  UnityEngine.UI.Button btnSubmit;
-    [SerializeField]  bool sendDirect;
-    [SerializeField] InputField RecieverEmail;
+    [SerializeField] bool sendDirect;
+    [SerializeField]  InputField RecieverEmail;
 
-    const string kSenderEmailAddress = "siboardgame@gmail.com";
+    const  string kSenderEmailAddress = "siboardgame@gmail.com";
     const string kSenderPassword = "24679Vader*_%#";
     const string kReceiverEmailAddress = "siboardgame@gmail.com";
     

@@ -12,7 +12,7 @@ public class createAccountManagement : MonoBehaviour
     
 
     public InputField nameField;
-    public InputField emailField;
+    public  static InputField emailField;
     public InputField passwordField;
     public InputField confrimPassword;
     public InputField codeField;
@@ -27,9 +27,18 @@ public class createAccountManagement : MonoBehaviour
     
     public void CallRegister()
     {
-        confirmationCode = UnityEngine.Random.Range(1000, 10000);
-        Debug.Log(confirmationCode);
-        StartCoroutine(Register());
+        if (nameField.text.Length >= 8 && passwordField.text == confrimPassword.text && emailField.text.Contains("@") && emailField.text.Contains("."))
+        {
+            confirmationCode = UnityEngine.Random.Range(1000, 10000);
+            Debug.Log(confirmationCode);
+            StartCoroutine(Register());
+        }
+        else
+        {
+            consoleMessage.text = "Check your inputs";
+            submitButton.interactable = false;
+        }
+            
 
     }
 
@@ -47,6 +56,7 @@ public class createAccountManagement : MonoBehaviour
         if (www.text == "0" && passwordField.text == confrimPassword.text)
         {
             Debug.Log("User created successfully");
+            Emailer.Begin();
             inputConfirmationCode.SetActive(true);
             submitButton.interactable = false;
             confirmationButton.interactable = true;
