@@ -8,17 +8,17 @@ using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 
- public class Emailer : MonoBehaviour
+public class Emailer : MonoBehaviour
 {
     //[SerializeField] TMPro.TextMeshProUGUI txtData;
     //[SerializeField]  UnityEngine.UI.Button btnSubmit;
     [SerializeField] bool sendDirect;
-    [SerializeField]  InputField RecieverEmail;
+    [SerializeField] InputField RecieverEmail;
 
-    const  string kSenderEmailAddress = "siboardgame@gmail.com";
+    const string kSenderEmailAddress = "siboardgame@gmail.com";
     const string kSenderPassword = "24679Vader*_%#";
     const string kReceiverEmailAddress = "siboardgame@gmail.com";
-    
+
 
     // Method 2: Server request
     //const string url = "https://coderboy6000.000webhostapp.com/emailer.php";
@@ -29,15 +29,15 @@ using UnityEngine.UI;
         int code = createAccountManagement.confirmationCode;
         //UnityEngine.Assertions.Assert.IsNotNull(txtData);
         //UnityEngine.Assertions.Assert.IsNotNull(btnSubmit);
-            if (sendDirect)
-            {
-                SendAnEmail("Thank you for signing up to SI_Boardgame, here is your confirmation code: " + code + " \n Please email siboardgame@gmail.com for help", RecieverEmail.text);
-            }
-            //else
-            //{
-            //    SendServerRequestForEmail(txtData.text);
-            //}
-        
+        if (sendDirect)
+        {
+            SendAnEmail("Thank you for signing up to SI_Boardgame, here is your confirmation code: " + code + " \n Please email siboardgame@gmail.com for help", RecieverEmail.text);
+        }
+        //else
+        //{
+        //    SendServerRequestForEmail(txtData.text);
+        //}
+
     }
 
     // Method 1: Direct message
@@ -58,7 +58,8 @@ using UnityEngine.UI;
         smtpServer.EnableSsl = true;
         ServicePointManager.ServerCertificateValidationCallback =
             delegate (object s, X509Certificate certificate,
-            X509Chain chain, SslPolicyErrors sslPolicyErrors) {
+            X509Chain chain, SslPolicyErrors sslPolicyErrors)
+            {
                 Debug.Log("Email success!");
                 return true;
             };
@@ -77,6 +78,7 @@ using UnityEngine.UI;
             Debug.Log("Email sent!");
         }
     }
+}
 
     //// Method 2: Server request
     //private void SendServerRequestForEmail(string message)
@@ -84,30 +86,29 @@ using UnityEngine.UI;
     //    StartCoroutine(SendMailRequestToServer(message));
     //}
 
-    //// Method 2: Server request
-    //static IEnumerator SendMailRequestToServer(string message)
-    //{
-    //    // Setup form responses
-    //    WWWForm form = new WWWForm();
-    //    form.AddField("name", "It's me!");
-    //    form.AddField("fromEmail", kSenderEmailAddress);
-    //    form.AddField("toEmail", kReceiverEmailAddress);
-    //    form.AddField("message", message);
+//// Method 2: Server request
+//static IEnumerator SendMailRequestToServer(string message)
+//{
+//    // Setup form responses
+//    WWWForm form = new WWWForm();
+//    form.AddField("name", "It's me!");
+//    form.AddField("fromEmail", kSenderEmailAddress);
+//    form.AddField("toEmail", kReceiverEmailAddress);
+//    form.AddField("message", message);
 
-    //    // Submit form to our server, then wait
-    //    WWW www = new WWW(url, form);
-    //    Debug.Log("Email sent!");
+//    // Submit form to our server, then wait
+//    WWW www = new WWW(url, form);
+//    Debug.Log("Email sent!");
 
-    //    yield return www;
+//    yield return www;
 
-    //    // Print results
-    //    if (www.error == null)
-    //    {
-    //        Debug.Log("WWW Success!: " + www.text);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("WWW Error: " + www.error);
-    //    }
-    //}
-}
+//    // Print results
+//    if (www.error == null)
+//    {
+//        Debug.Log("WWW Success!: " + www.text);
+//    }
+//    else
+//    {
+//        Debug.Log("WWW Error: " + www.error);
+//    }
+//}

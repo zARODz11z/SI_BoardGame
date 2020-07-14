@@ -27,8 +27,8 @@ public class LoginManagement : MonoBehaviour
         form.AddField("name", nameField.text);
         form.AddField("password", passwordField.text);
 
-        WWW www = new WWW("http://localhost:81/SI_BoardGame/login.php", form);
-
+        //WWW www = new WWW("http://localhost:81/SI_BoardGame/login.php", form);
+        WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/login.php", form);
         yield return www;
         Debug.Log(www.text);
         if (www.text[0] == '0')

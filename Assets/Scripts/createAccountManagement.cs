@@ -35,8 +35,8 @@ public class createAccountManagement : MonoBehaviour
         }
         else
         {
-            consoleMessage.text = "Check your inputs";
-            submitButton.interactable = false;
+            consoleMessage.text = "Error please check your inputs & try again";
+            
         }
             
 
@@ -50,20 +50,20 @@ public class createAccountManagement : MonoBehaviour
         form.AddField("password", passwordField.text);
         form.AddField("confirmPassword", confrimPassword.text);
 
+        //WWW www = new WWW("http://localhost:81/SI_BoardGame/register.php", form);
         WWW www = new WWW("http://localhost:81/SI_BoardGame/register.php", form);
-
         yield return www;
         if (www.text == "0" && passwordField.text == confrimPassword.text)
         {
             Debug.Log("User created successfully");
-            Emailer.Begin();
+            //Emailer.Begin();
             inputConfirmationCode.SetActive(true);
             submitButton.interactable = false;
             confirmationButton.interactable = true;
 
             //Emailer emailObject = new Emailer();
             //emailObject.Start(emailField.text, confirmationCode);
-            //verifyConfirmationCode();
+            verifyConfirmationCode();
                                                           
 
         }
@@ -87,47 +87,7 @@ public class createAccountManagement : MonoBehaviour
         //else return false;
     }
 
-    public void verifyInputs()
-    {
-        if(nameField.text.Length >= 8 && passwordField.text == confrimPassword.text && emailField.text.Contains("@") && emailField.text.Contains("."))
-        {
-            submitButton.interactable = true;
-        }
-                
-    }
-    public void VerifyUsername()
-    {
-        if (nameField.text.Length >= 8)
-        {
-            consoleMessage.text = "";
-
-        }
-        else consoleMessage.text = "Enter a valid username";
-    }
-    public void VerifyPasswords()
-    {
-        if (confrimPassword.text == passwordField.text)
-        {
-            consoleMessage.text = "";
-        }
-        else consoleMessage.text = "Passwords dont match";
-    }
     
-
-    public void VerifyEmail()
-    {
-        if(emailField.text.Contains("@") && emailField.text.Contains("."))
-        {
-
-            consoleMessage.text = "";
-        }
-        else
-        {
-            consoleMessage.text = "Enter a valid email";
-        }
-
-        //submitButton.interactable = (emailField.text.Contains("@") && emailField.text.Contains("."));
-    }
     
   
     public void hideOrShowPassword()
