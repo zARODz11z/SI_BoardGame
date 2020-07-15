@@ -28,7 +28,7 @@ public class createAccountManagement : MonoBehaviour
     
     public void CallRegister()
     {
-        if (nameField.text.Length >= 8 && passwordField.text == confrimPassword.text && emailField.text.Contains("@") && emailField.text.Contains("."))
+        if (nameField.text.Length >= 8 && passwordField.text.Length >=8 && passwordField.text == confrimPassword.text && emailField.text.Contains("@") && emailField.text.Contains("."))
         {
             consoleMessage.text = "";
             confirmationCode = UnityEngine.Random.Range(1000, 10000);
@@ -64,9 +64,9 @@ public class createAccountManagement : MonoBehaviour
             confirmationButton.interactable = true;
 
             //Emailer emailObject = new Emailer();
-            //Emailer emailObject = gameObject.AddComponent<Emailer>();
+            Emailer emailObject = gameObject.AddComponent<Emailer>();
 
-            //emailObject.Begin(emailField.text);
+            emailObject.Begin(emailField.text);
             verifyConfirmationCode();
                                                           
 
