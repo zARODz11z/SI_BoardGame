@@ -12,7 +12,7 @@ public class createAccountManagement : MonoBehaviour
     
 
     public InputField nameField;
-    public  static InputField emailField;
+    public  InputField emailField;
     public InputField passwordField;
     public InputField confrimPassword;
     public InputField codeField;
@@ -22,6 +22,7 @@ public class createAccountManagement : MonoBehaviour
     public Toggle showPasswordToggle;
     public static int confirmationCode;
     public GameObject inputConfirmationCode;
+    //public GameObject emailerObj;
 
 
     
@@ -29,6 +30,7 @@ public class createAccountManagement : MonoBehaviour
     {
         if (nameField.text.Length >= 8 && passwordField.text == confrimPassword.text && emailField.text.Contains("@") && emailField.text.Contains("."))
         {
+            consoleMessage.text = "";
             confirmationCode = UnityEngine.Random.Range(1000, 10000);
             Debug.Log(confirmationCode);
             StartCoroutine(Register());
@@ -51,7 +53,7 @@ public class createAccountManagement : MonoBehaviour
         form.AddField("confirmPassword", confrimPassword.text);
 
         //WWW www = new WWW("http://localhost:81/SI_BoardGame/register.php", form);
-        WWW www = new WWW("http://localhost:81/SI_BoardGame/register.php", form);
+        WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/register.php", form);
         yield return www;
         if (www.text == "0" && passwordField.text == confrimPassword.text)
         {
@@ -62,7 +64,9 @@ public class createAccountManagement : MonoBehaviour
             confirmationButton.interactable = true;
 
             //Emailer emailObject = new Emailer();
-            //emailObject.Start(emailField.text, confirmationCode);
+            //Emailer emailObject = gameObject.AddComponent<Emailer>();
+
+            //emailObject.Begin(emailField.text);
             verifyConfirmationCode();
                                                           
 
@@ -87,9 +91,10 @@ public class createAccountManagement : MonoBehaviour
         //else return false;
     }
 
+
+
     
-    
-  
+
     public void hideOrShowPassword()
     {
         if (showPasswordToggle.isOn)

@@ -10,46 +10,47 @@ using UnityEngine.UI;
 
 public class Emailer : MonoBehaviour
 {
-    //[SerializeField] TMPro.TextMeshProUGUI txtData;
-    //[SerializeField]  UnityEngine.UI.Button btnSubmit;
+    string txtData;
+    [SerializeField] UnityEngine.UI.Button btnSubmit;
     [SerializeField] bool sendDirect;
-    [SerializeField] InputField RecieverEmail;
+    public InputField emailField;
 
     const string kSenderEmailAddress = "siboardgame@gmail.com";
-    const string kSenderPassword = "24679Vader*_%#";
-    const string kReceiverEmailAddress = "siboardgame@gmail.com";
-
+    const string kSenderPassword = "CoderBoy6000!!!";
+    static string kReceiverEmailAddress = "";
 
     // Method 2: Server request
-    //const string url = "https://coderboy6000.000webhostapp.com/emailer.php";
+    const string url = "https://www.andrewthedev.com/UnityGames/SI_BoardGame/Emailer.php";
 
-    public void Begin()
+    public void Start()
     {
-        Debug.Log("Entered begin in emailer");
+        kReceiverEmailAddress = emailField.text;
         int code = createAccountManagement.confirmationCode;
+        txtData = "Thank you for signing up to SI_Boardgame, here is your confirmation code: " + code + " \n Please email siboardgame@gmail.com for help";
         //UnityEngine.Assertions.Assert.IsNotNull(txtData);
-        //UnityEngine.Assertions.Assert.IsNotNull(btnSubmit);
-        if (sendDirect)
-        {
-            SendAnEmail("Thank you for signing up to SI_Boardgame, here is your confirmation code: " + code + " \n Please email siboardgame@gmail.com for help", RecieverEmail.text);
-        }
-        //else
-        //{
-        //    SendServerRequestForEmail(txtData.text);
-        //}
-
+        UnityEngine.Assertions.Assert.IsNotNull(btnSubmit);
+        btnSubmit.onClick.AddListener(delegate {
+            if (sendDirect)
+            {
+                SendAnEmail(txtData);
+            }
+            else
+            {
+                SendServerRequestForEmail(txtData);
+            }
+        });
     }
 
     // Method 1: Direct message
-    private static void SendAnEmail(string message, string email)
+    private static void SendAnEmail(string message)
     {
         // Create mail
-        Debug.Log("Entered send an email");
         MailMessage mail = new MailMessage();
         mail.From = new MailAddress(kSenderEmailAddress);
-        mail.To.Add(email);
-        mail.Subject = "SI Boardgame Confirmation";
+        mail.To.Add(kReceiverEmailAddress);
+        mail.Subject = "Email Title";
         mail.Body = message;
+
         // Setup server 
         SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
         smtpServer.Port = 587;
@@ -58,8 +59,7 @@ public class Emailer : MonoBehaviour
         smtpServer.EnableSsl = true;
         ServicePointManager.ServerCertificateValidationCallback =
             delegate (object s, X509Certificate certificate,
-            X509Chain chain, SslPolicyErrors sslPolicyErrors)
-            {
+            X509Chain chain, SslPolicyErrors sslPolicyErrors) {
                 Debug.Log("Email success!");
                 return true;
             };
@@ -78,37 +78,37 @@ public class Emailer : MonoBehaviour
             Debug.Log("Email sent!");
         }
     }
+
+    // Method 2: Server request
+    private void SendServerRequestForEmail(string message)
+    {
+        StartCoroutine(SendMailRequestToServer(message));
+    }
+
+    // Method 2: Server request
+    static IEnumerator SendMailRequestToServer(string message)
+    {
+        // Setup form responses
+        WWWForm form = new WWWForm();
+        form.AddField("name", "It's me!");
+        form.AddField("fromEmail", kSenderEmailAddress);
+        form.AddField("toEmail", kReceiverEmailAddress);
+        form.AddField("message", message);
+
+        // Submit form to our server, then wait
+        WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/Emailer.php", form);
+        Debug.Log("server Email sent!");
+
+        yield return www;
+
+        // Print results
+        if (www.error == null)
+        {
+            Debug.Log("WWW Success!: " + www.text);
+        }
+        else
+        {
+            Debug.Log("WWW Error: " + www.error);
+        }
+    }
 }
-
-    //// Method 2: Server request
-    //private void SendServerRequestForEmail(string message)
-    //{
-    //    StartCoroutine(SendMailRequestToServer(message));
-    //}
-
-//// Method 2: Server request
-//static IEnumerator SendMailRequestToServer(string message)
-//{
-//    // Setup form responses
-//    WWWForm form = new WWWForm();
-//    form.AddField("name", "It's me!");
-//    form.AddField("fromEmail", kSenderEmailAddress);
-//    form.AddField("toEmail", kReceiverEmailAddress);
-//    form.AddField("message", message);
-
-//    // Submit form to our server, then wait
-//    WWW www = new WWW(url, form);
-//    Debug.Log("Email sent!");
-
-//    yield return www;
-
-//    // Print results
-//    if (www.error == null)
-//    {
-//        Debug.Log("WWW Success!: " + www.text);
-//    }
-//    else
-//    {
-//        Debug.Log("WWW Error: " + www.error);
-//    }
-//}
