@@ -25,6 +25,10 @@ public class ButtonManagement : MonoBehaviour {
     {
         SceneManager.LoadScene("createAccount");
     }
+    public void LoadCreateGamePage()
+    {
+        SceneManager.LoadScene("boardGameSetUp");
+    }
 
     public void MuteToggle()
     {

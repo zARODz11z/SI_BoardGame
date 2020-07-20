@@ -2,72 +2,82 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
+using UnityEngine.Networking;
 using UnityEngine;
 
 public class boardGameSetUpManagement : MonoBehaviour
 {
-    private string saveKey;
-    private string gameName;
-    static public int numOfPlayers;
-    public int numOfTeams;
-    public GameObject ErrorMsgs;
+    private string gameName = "";
+    static public int numOfPlayers = 0;
     public GameObject[] characters;
     public Vector3 startPos;
-    // Use this for initialization
-    void Start()
-    {
-        
-    }
+    public string[] gameArray = DBManager.gameContent;
+
 
     public void finishCreate()
     {
-        getNumberOfPlayers();
-        getNumberOfTeams();
-        getGameName();
-        getSaveKey();
-        if (!gameName.Equals("") && !saveKey.Equals("") && numOfPlayers!=0 && numOfTeams!=0)
+        gameName = getGameName();
+        numOfPlayers = getNumberOfPlayers();
+        DBManager.gameName = gameName;
+        DBManager.numOfPlayers = numOfPlayers;
+
+        if (DBManager.gameName.Length > 0 &&  DBManager.numOfPlayers!=0)
         {
+            //StartCoroutine(createFile());
+            
+            Debug.Log(DBManager.username);
             SceneManager.LoadScene("boardGameInputQuestion");
         }
         else
         {
             //string msg = GameObject.Find("errorMsg").GetComponent<Text>().ToString();
-            ErrorMsgs.SetActive(true);
+            //ErrorMsgs.SetActive(true);
+            Debug.Log("Something went wrong");
 
         }
         
     }
    
-    //public static int sendNumOfPlayers()
+    //IEnumerator createFile()
     //{
-     //   return numOfPlayers;
+    //    WWWForm form = new WWWForm();
+    //    form.AddField("gameName", gameName);
+    //    form.AddField("numOfPlayers", numOfPlayers.ToString());
+        
+
+    //    WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/fromUnity.php", form);
+    //    yield return www;
+    //    if (www.error != null)
+    //    {
+    //        Debug.Log("Successfully made file");
+    //    }
+    //    else
+    //        Debug.Log(www.text);
+
+
     //}
-    public void getNumberOfTeams()
-    {
-        numOfTeams = int.Parse(GameObject.Find("noOfTeamsInput").GetComponent<Text>().text);
-        Debug.Log("num of teams is: " + numOfTeams);
-    }
-    public void getNumberOfPlayers()
+
+
+    public int getNumberOfPlayers()
     {
         numOfPlayers = int.Parse(GameObject.Find("noOfPlayersInput").GetComponent<Text>().text);
         Debug.Log("num of players is: " + numOfPlayers);
+        return numOfPlayers;
+
     }
     public void MuteToggle()
     {
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().mute = !GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().mute;
     }
     
-    public void getGameName()
+    public string getGameName()
     {
         gameName = GameObject.Find("gameNameInput").GetComponent<Text>().text;
         Debug.Log("game Name is: " + gameName);
+        return gameName;
     }
-    public void getSaveKey()
-    {
-        saveKey = GameObject.Find("CreatesaveKeyInput").GetComponent<Text>().text;
-        Debug.Log("save Key is: " + saveKey);
-
-    }
+    
     public void goHome()
     {
         SceneManager.LoadScene("WelcomePage");

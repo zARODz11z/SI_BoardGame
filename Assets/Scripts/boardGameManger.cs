@@ -1,19 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class boardGameManger : MonoBehaviour
+     
 {
-    //public int numOfPlayer = boardGameSetUpManagement.sendNumOfPlayers();
-    // Start is called before the first frame update
-    void Start()
+    public GameObject dice;
+    public GameObject question;
+    public GameObject editQuestions;
+    public Button displayQuestion, inputQuestion;
+    public TMP_InputField InputQuestion;
+    public TMP_InputField InputAnswer;
+
+
+
+    [DllImport("__Internal")]
+    private static extern void SaveFile(string []fileData, string fileName);
+
+
+    public void Save()
     {
-       // Debug.Log("Num of players: " + numOfPlayer);
+        SaveFile(DBManager.gameContent, DBManager.gameName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EditQuestions()
     {
-        
+        editQuestions.SetActive(true);
+        displayQuestion.interactable = false;
+        inputQuestion.interactable = true;
+        dice.SetActive(false);
+    }
+
+    // Start is called before the first frame update
+    public void changeToQuestion()
+    {
+        dice.SetActive(false);
+        question.SetActive(true);
+    }
+    public void changeToDice()
+    {
+        Debug.Log("changedToDice");
+        dice.SetActive(true);
+        question.SetActive(false);
     }
 }
