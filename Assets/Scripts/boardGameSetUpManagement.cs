@@ -24,7 +24,7 @@ public class boardGameSetUpManagement : MonoBehaviour
 
         if (DBManager.gameName.Length > 0 &&  DBManager.numOfPlayers!=0)
         {
-            //StartCoroutine(createFile());
+            StartCoroutine(createFile());
             
             Debug.Log(DBManager.username);
             SceneManager.LoadScene("boardGameInputQuestion");
@@ -33,30 +33,32 @@ public class boardGameSetUpManagement : MonoBehaviour
         {
             //string msg = GameObject.Find("errorMsg").GetComponent<Text>().ToString();
             //ErrorMsgs.SetActive(true);
-            Debug.Log("Something went wrong");
+            Debug.Log("game length not long enough or num of players = 0");
 
         }
         
     }
    
-    //IEnumerator createFile()
-    //{
-    //    WWWForm form = new WWWForm();
-    //    form.AddField("gameName", gameName);
-    //    form.AddField("numOfPlayers", numOfPlayers.ToString());
+    IEnumerator createFile()
+    {
+        Debug.Log("REACHED THE CREATE FILE COURUTINE");
+        WWWForm form = new WWWForm();
+        form.AddField("username", DBManager.username);
+        form.AddField("gameName", gameName);
+        form.AddField("numOfPlayers", numOfPlayers.ToString());
         
 
-    //    WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/fromUnity.php", form);
-    //    yield return www;
-    //    if (www.error != null)
-    //    {
-    //        Debug.Log("Successfully made file");
-    //    }
-    //    else
-    //        Debug.Log(www.text);
+        WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/fromUnity.php", form);
+        yield return www;
+        if (www.error != null)
+        {
+            Debug.Log("Successfully made file");
+        }
+        else
+           Debug.Log(www.text);
 
 
-    //}
+    }
 
 
     public int getNumberOfPlayers()
