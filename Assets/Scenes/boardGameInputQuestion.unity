@@ -2858,7 +2858,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 867948071}
-        m_MethodName: Save
+        m_MethodName: CallSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

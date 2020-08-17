@@ -19,17 +19,7 @@ public class fileManager : MonoBehaviour
 
     void GetGameFile()
     {
-        if(path != null)
-        {
-            string [] fileContent = File.ReadAllLines(path);
-            DBManager.gameContent = fileContent;
-            //foreach(string line in fileContent)
-            //{
-            //    Debug.Log(line);
-            //}
-            consoleText.text = "Successfully uploaded " + fileContent[0];
-            //UpdateGameFile();
-        }
+       
     }
 
    // void UpdateGameFile()

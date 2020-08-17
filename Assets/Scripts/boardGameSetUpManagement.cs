@@ -12,8 +12,15 @@ public class boardGameSetUpManagement : MonoBehaviour
     static public int numOfPlayers = 0;
     public GameObject[] characters;
     public Vector3 startPos;
-    public string[] gameArray = DBManager.gameContent;
-
+    //public string[] gameArray = DBManager.gameContent;
+    public Text consoleText;
+    readonly string getURL = "https://www.andrewthedev.com/UnityGames/SI_BoardGame/download.php";
+    public Dictionary<int, string[]>[] List_of_games;
+    public void Start()
+    {
+        consoleText.text = "Downloading your saved games...";
+        StartCoroutine(download());
+    }
 
     public void finishCreate()
     {
@@ -24,7 +31,6 @@ public class boardGameSetUpManagement : MonoBehaviour
 
         if (DBManager.gameName.Length > 0 &&  DBManager.numOfPlayers!=0)
         {
-            StartCoroutine(createFile());
             
             Debug.Log(DBManager.username);
             SceneManager.LoadScene("boardGameInputQuestion");
@@ -39,24 +45,19 @@ public class boardGameSetUpManagement : MonoBehaviour
         
     }
    
-    IEnumerator createFile()
+    IEnumerator download()
     {
-        Debug.Log("REACHED THE CREATE FILE COURUTINE");
-        WWWForm form = new WWWForm();
-        form.AddField("username", DBManager.username);
-        form.AddField("gameName", gameName);
-        form.AddField("numOfPlayers", numOfPlayers.ToString());
-        
-
-        WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/fromUnity.php", form);
-        yield return www;
-        if (www.error != null)
+        Debug.Log("REACHED THE download COURUTINE");
+        UnityWebRequest www = UnityWebRequest.Get(getURL);
+        yield return www.SendWebRequest();
+        if(www.isNetworkError || www.isHttpError)
         {
-            Debug.Log("Successfully made file");
+            Debug.LogError(www.error);
         }
         else
-           Debug.Log(www.text);
-
+        {
+            consoleText.text = www.downloadHandler.text;
+        }
 
     }
 

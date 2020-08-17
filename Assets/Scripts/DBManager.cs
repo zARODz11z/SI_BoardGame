@@ -9,8 +9,8 @@ public static class DBManager
     public static bool LoggedIn { get { return username != null; } }
     public static string gameName = "";
     public static int numOfPlayers = 0;
-    public static string [] gameContent;
-    public static bool GameUploaded { get { return gameContent != null; } }
+    public static Dictionary<int, string[]> game_data = new Dictionary<int, string[]>();
+    public static bool GameUploaded { get { return game_data != null; } }
 
     public static void LogOut()
     {
