@@ -16,6 +16,10 @@ public class boardGameSetUpManagement : MonoBehaviour
     public Text consoleText;
     readonly string getURL = "https://www.andrewthedev.com/UnityGames/SI_BoardGame/download.php";
     public Dictionary<int, string[]>[] List_of_games;
+    public string Game1;
+    public string Game2;
+    public string Game3;
+
     public void Start()
     {
         consoleText.text = "Downloading your saved games...";
@@ -48,7 +52,10 @@ public class boardGameSetUpManagement : MonoBehaviour
     IEnumerator download()
     {
         Debug.Log("REACHED THE download COURUTINE");
-        UnityWebRequest www = UnityWebRequest.Get(getURL);
+        WWWForm form = new WWWForm();
+        form.AddField("username", DBManager.username);
+
+        UnityWebRequest www = UnityWebRequest.Post(getURL,form);
         yield return www.SendWebRequest();
         if(www.isNetworkError || www.isHttpError)
         {
@@ -56,7 +63,16 @@ public class boardGameSetUpManagement : MonoBehaviour
         }
         else
         {
-            consoleText.text = www.downloadHandler.text;
+            //consoleText.text = www.downloadHandler.text;
+            consoleText.text = "Successfully downloaded your saved games! Look in the dropdown above!";
+            Debug.Log(www.downloadHandler.text);
+            string fromPHP = www.downloadHandler.text;
+            string[] gameStrings = fromPHP.Split('\n');
+            for(int i =0; i < gameStrings.Length; i++)
+            {
+                Debug.Log(gameStrings[i]);
+            }
+
         }
 
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public static class DBManager
 {
     public static string username;
-    public static int score;
+    //public static int score;
     public static bool LoggedIn { get { return username != null; } }
     public static string gameName = "";
     public static int numOfPlayers = 0;

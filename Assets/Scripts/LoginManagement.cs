@@ -31,10 +31,11 @@ public class LoginManagement : MonoBehaviour
         WWW www = new WWW("https://www.andrewthedev.com/UnityGames/SI_BoardGame/login.php", form);
         yield return www;
         Debug.Log(www.text);
+        Debug.Log(www.text[0] == '0');
         if (www.text[0] == '0')
         {
             DBManager.username = nameField.text;
-            DBManager.score = int.Parse(www.text.Split('\t')[2]);
+            //DBManager.score = int.Parse(www.text.Split('\t')[2]);
             SceneManager.LoadScene("WelcomePage");
 
         }

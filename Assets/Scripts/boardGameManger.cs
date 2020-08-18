@@ -66,6 +66,7 @@ public class boardGameManger : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("gameName", "exampleGame");
         form.AddField("game_data", binaryGameData);
+        form.AddField("username", DBManager.username);
         //wwwForm.Add(new MultipartFormDataSection("gameData", gameData));
 
         UnityWebRequest www = UnityWebRequest.Post(postURL, form);
