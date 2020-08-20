@@ -1,20 +1,29 @@
 # Full-Stack Exam Review Application
-![Project Image]()
-**SI Board Game** is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study.
+<img src="SIBoard_modal.png" alt="alt text" width="200px" height="200px">
+
+
+>**SI Board Game** is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study.
 
 Author: **Andrew Rodriguez**
 
 Time spent: **2** months spent in total
 ---
+### Table of Contents
+- [Description](#description)
+- [How To Use](#how-to-use)
+- [User Stories](#user-stories)
+
+---
 ## User Stories
 
-* [ ] User can **view a list of todo items**
-* [ ] User can **successfully add and remove items** from the todo list
-* [ ] User's **list of items persisted** upon modification and and retrieved properly on app restart
+* [x] User can **Create a unique account with hashed passwords and an email** to recieve confirmation codes
+* [x] User can **Login with their account** from the login page
+* [x] User can **Update account password** by recieving a reset email
+* [x] User can **Create and save** up to 3 personalized study boards
+* [x] User can **reopen saved** study boards
+* [x] User can **Edit** the study board by inserting questions, and images.
+* [x] User can **Play** their study board game.
 
-The following **optional** features are implemented:
-
-* [ ] User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list
 
 The following **additional** features are implemented:
 
