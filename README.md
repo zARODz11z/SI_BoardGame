@@ -27,27 +27,30 @@ SI Board Game is a Unity WebGL game that allows Supplemental Instruction leaders
 * [x] User can **Update account password** by recieving a reset email
 * [x] User can **Create and save** up to 3 personalized study boards
 * [x] User can **reopen saved** study boards
-* [x] User can **Edit** the study board by inserting questions, and images.
-* [x] User can **Play** their study board game.
+* [x] User can **Edit** the study board by inserting questions, and images
+* [x] User can **Play** their study board game
 ---
 ## Video Walkthrough
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+### GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ---
 ## How to use
 1) Visit [andrewthedev.com/si-board-game/](https://www.andrewthedev.com/si-board-game/)
 2) Create an account or play right away without the ability to save your progress. After creating your account input the confirmation code sent to your email
 3) Login to your account
 4) Click play
-5) Create a game or choose from your 3 previously saved games. Delete a game to make room for a different game.
+5) Create a game or choose from your 3 previously saved games. Delete a game to make room for a different game
 6) Click on the numbered squares to input your questions and answers (**DONT FORGET TO SAVE YOUR PROGRESS**)
+7) When ready, start the game and add as many students as you need
+8) Roll the virual die and have the students answer the question
+9) Move their character accordinanly to the rolled number
 ---
 ## Challenges
 - Initially I struggled with the backend developement because it was totally new to me and I had to do a lot of research on PHP and MySQL
-- Additionally setting up the Google cloud MySQL database was daunting at first but it was fairly easy in the end.
+- Additionally setting up the Google cloud MySQL database was daunting at first but it was fairly easy in the end
 ---
 ## Author Info
 - Linkedin - [@andrew-m-rodriguez](https://www.linkedin.com/in/andrew-m-rodriguez)
