@@ -1,18 +1,36 @@
 # Full-Stack Exam Review Application
 <img src="SIBoard_modal.png" alt="alt text" width="200px" height="200px">
-
-
->**SI Board Game** is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study.
-
+    
+**SI Board Game**
+<br>
 Author: **Andrew Rodriguez**
-
-Time spent: **2** months spent in total
 ---
 ### Table of Contents
 - [Description](#description)
 - [How To Use](#how-to-use)
+- [Video Walkthrough](#video-walkthrough)
 - [User Stories](#user-stories)
+- [Author Info](#author-info)
+---
+## Description
+**SI Board Game is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study. Using Unity as the frontend with PHP and MySQL in the backend users data is persistant. Users can create and login using HTTPS-based user authentication with hashed passwords.
+#### Technologies
+- C#
+- PHP
+- Unity
+- Google Cloud Platform
+- MySQL
+---
+## How to use
 
+---
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ---
 ## User Stories
 
@@ -23,23 +41,14 @@ Time spent: **2** months spent in total
 * [x] User can **reopen saved** study boards
 * [x] User can **Edit** the study board by inserting questions, and images.
 * [x] User can **Play** their study board game.
+---
+## Challenges
 
 
-The following **additional** features are implemented:
-
-* [ ] List anything else that you can get done to improve the app functionality!
-
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
+---
+## Author Info
+- Linkedin - [@andrew-m-rodriguez](https://www.linkedin.com/in/andrew-m-rodriguez)
+- Website - [andrewthedev](https://www.andrewthedev.com/)
 
 ## License
 
