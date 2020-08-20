@@ -13,7 +13,7 @@ Author: **Andrew Rodriguez**
 - [Author Info](#author-info)
 ---
 ## Description
-**SI Board Game is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study. Using Unity as the frontend with PHP and MySQL in the backend users data is persistant. Users can create and login using HTTPS-based user authentication with hashed passwords.
+SI Board Game is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study. Using Unity as the frontend with PHP and MySQL in the backend users data is persistant. Users can create and login using HTTPS-based user authentication with hashed passwords.
 #### Technologies
 - C#
 - PHP
@@ -21,19 +21,7 @@ Author: **Andrew Rodriguez**
 - Google Cloud Platform
 - MySQL
 ---
-## How to use
-
----
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
----
 ## User Stories
-
 * [x] User can **Create a unique account with hashed passwords and an email** to recieve confirmation codes
 * [x] User can **Login with their account** from the login page
 * [x] User can **Update account password** by recieving a reset email
@@ -42,6 +30,21 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 * [x] User can **Edit** the study board by inserting questions, and images.
 * [x] User can **Play** their study board game.
 ---
+## Video Walkthrough
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+---
+## How to use
+1) Visit [andrewthedev.com/si-board-game/](https://www.andrewthedev.com/si-board-game/)
+2) Create an account or play right away without the ability to save your progress. After creating your account input the confirmation code sent to your email
+3) Login to your account
+4) Click play
+5) Create a game or choose from your 3 previously saved games. Delete a game to make room for a different game.
+6) Click on the numbered squares to input your questions and answers (**DONT FORGET TO SAVE YOUR PROGRESS**)
+---
 ## Challenges
 
 
@@ -49,19 +52,3 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Author Info
 - Linkedin - [@andrew-m-rodriguez](https://www.linkedin.com/in/andrew-m-rodriguez)
 - Website - [andrewthedev](https://www.andrewthedev.com/)
-
-## License
-
-    Copyright [yyyy] [name of copyright owner]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
