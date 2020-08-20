@@ -13,7 +13,7 @@ Author: **Andrew Rodriguez**
 - [Author Info](#author-info)
 ---
 ## Description
-SI Board Game is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study. Using Unity as the frontend with PHP and MySQL in the backend users data is persistant. Users can create and login using HTTPS-based user authentication with hashed passwords.
+SI Board Game is a Unity WebGL game that allows Supplemental Instruction leaders to gamify their exam reviews remotely by logging user data and simulating peronalized boards for study. Using Unity as the frontend with PHP and MySQL in the backend users data is persistant. Users can create and login using HTTPS-based user authentication with hashed passwords. Database supports (CRUD) Create, read, update, and delete operations.
 #### Technologies
 - C#
 - PHP
@@ -46,8 +46,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 6) Click on the numbered squares to input your questions and answers (**DONT FORGET TO SAVE YOUR PROGRESS**)
 ---
 ## Challenges
-
-
+- Initially I struggled with the backend developement because it was totally new to me and I had to do a lot of research on PHP and MySQL
+- Additionally setting up the Google cloud MySQL database was daunting at first but it was fairly easy in the end.
 ---
 ## Author Info
 - Linkedin - [@andrew-m-rodriguez](https://www.linkedin.com/in/andrew-m-rodriguez)
